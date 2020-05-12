@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - TargetEnemyUnit
+  - EnemyUnit
+  - PlayerUnit
   layers:
   - Default
   - TransparentFX
@@ -40,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: HUD
+    uniqueID: 4069693347
+    locked: 0
+  - name: Player
+    uniqueID: 3128122351
     locked: 0
