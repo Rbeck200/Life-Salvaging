@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//This is a complete reconstruction of my teachers priority queue which oyu can look at in my milestone 5 repository.
 public class PriorityQueue<T> where T : IComparable<T>
 {
     private List<T> _items;
     private IComparer<T> _comparer;
 
+    //comstructor
     public PriorityQueue(IComparer<T> comparer = null)
     {
         _items = new List<T>();
@@ -27,6 +30,7 @@ public class PriorityQueue<T> where T : IComparable<T>
         BuildHeap();
     }
 
+    //Function to build the heap
     private void BuildHeap()
     {
         for (int i = _items.Count / 2; i >= 0; i--)
@@ -35,6 +39,7 @@ public class PriorityQueue<T> where T : IComparable<T>
         }
     }
 
+    //function that adjusts the heap after something is taken out
     private void adjustHeap(int index)
     {
         if(_items.Count == 0)
@@ -80,16 +85,21 @@ public class PriorityQueue<T> where T : IComparable<T>
         }
     }
 
+
+    //see if it is empty
     public bool IsEmpty()
     {
         return _items.Count == 0;
     }
 
+
+    //get its count
     public int GetSize()
     {
         return _items.Count;
     }
 
+    //add something to the back of the priority queue
     public void enqueue(T item)
     {
         int current_pos = _items.Count;
@@ -116,11 +126,13 @@ public class PriorityQueue<T> where T : IComparable<T>
         _items[current_pos] = item;
     }
 
+    //get first item in priority queue
     public T GetFirst()
     {
         return _items[0];
     }
 
+    //dequeue item at the front of the priority queue
     public T Dequeue()
     {
         int last_pos = _items.Count - 1;
@@ -133,6 +145,7 @@ public class PriorityQueue<T> where T : IComparable<T>
         return top;
     }
 
+    //the magic comparer that will compare things so we can bubble them up or percolate them down
     private class GenericComparer<TInner> : IComparer<TInner> where TInner : IComparable<TInner>
     {
         public int Compare(TInner x, TInner y)
